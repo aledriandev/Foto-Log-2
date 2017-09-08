@@ -27,6 +27,7 @@ const fotoLog  = {
     },
 
     borrarTodo: function (event) {
+    	localStorage.clear();
         $('#ale').empty();
     }
 };
