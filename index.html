@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>FOTOLOG - STRAWBERRY</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/main.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 logo">
+					<img src="img/fotolog-logo.png" alt="">
+				</div>
+			</div>
+		</div>
+	</header>
+	<section id="bannerflog">
+		<div class="container">
+			<div class="col-md-12 text-center">
+				<h1>MONDO STRAWBERRY</h1>
+			</div>
+		</div>
+	</section>
+	<section id="contenido">
+		<div class="container">
+			<div class="col-md-2 recientes">
+				<a href="" class="fotos">Fotos Recientes</a>
+				<img src="img/1.jpg">
+				<img src="img/2.jpg" alt="">
+				<img src="img/3.jpg" alt="">
+				<img src="img/4.jpg" alt="">
+				<img src="img/1.jpg" alt="">
+			</div>
+			<div class="col-md-8">
+				<img src="img/7.jpg" alt="">
+				<p><strong>Deliciosas Fresas...</strong></p>
+			</div>
+			<div class="col-md-2 recientes">
+				<a href="" class="fotos">Fotos Recientes</a>
+				<img src="img/5.jpg">
+				<img src="img/3.jpg" alt="">
+				<img src="img/2.jpg" alt="">
+				<img src="img/1.jpg" alt="">
+				<img src="img/4.jpg" alt="">
+			</div>
+		</div>
+	</section>
+	<section class="formulario">
+		<div class="container" id="caja">
+			<div class="row">
+				<div class="col-md-offset-3 col-md-6">
+					<form Name="formulario">
+						<div class="row">
+					        <div class="col-lg-12 col-md-12 datos">
+					          <div class="form-group">
+					            <p><b>Nombe</b></p>
+					            <input type="text" id="clave">
+					          </div>
+					        </div>
+					      </div>
+					      <div class="row">
+					        <div class="col-lg-12 col-md-12 datos">
+					          <div class="form-group">
+					            <p><b>Comentario</b></p>
+					            <textarea id="valor"></textarea>
+					          </div>
+					        </div>
+					      </div>
+					      <div class="row">
+					        <div class="col-lg-12 col-md-12">
+					          <button type="button" class="btn btn-primary" onclick="guardarComentario()" value="Guardar comentario">Guardar</button>
+					          <button type="button" class="btn btn-primary" onclick="borrarTodo()" value="Recuperar datos">Borrar</button>
+					        </div>
+					      </div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="container">
+		<div class="row">
+			<div class="col-md-offset-3 col-md-6">
+				<div id="ale"></div>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<div class="row">
+			<div class="col-md-12">
+				<p class="text-center">Laboratoria 2017</p>
+			</div>
+		</div>
+	</footer>
+
+	<script src="js/main.js"></script>
+	 <!-- JQuery -->
+  <!-- Bootstrap JS -->
+  <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
