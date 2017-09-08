@@ -1,42 +1,34 @@
-var coments = localStorage.getItem("coments");
-coments = JSON.parse(coments);
-if(coments == null)
-	coments = []; 
 
-$(document).ready(function(){
-	muestraDatos()
-});
+////////////////////////////////////////////////
 
-//guarda cada comentario solo si esta completo
-function guardarComentario(){
-	var client = JSON.stringify({ 
-		name : $("#clave").val(), 
-		coment : $("#valor").val(),
-	});
+const fotoLog  = {
+		comentarios : [],
+    nuevo :  {
+        nombre: undefined,
+        comentario: undefined
+    },
 
-	if ( $("#clave").val() != "" && $("#valor").val() != "" ) {
-		coments.push(client); 
-	}
+    init : function () {
+        fotoLog.nuevo.nombre =  $('#clave');
+        fotoLog.nuevo.comentario =  $('#valor');
+        fotoLog.setup ();
+    },
 
-	$("#clave").val('');
-	$("#valor").val('');
-	localStorage.setItem("coments", JSON.stringify(coments));
-	muestraDatos();
-	return true; 
-}
+    setup: function () {
+        $('#agregar-comentario').click (fotoLog.agregarComentario) ;
+        $('#borrar-todo').click (fotoLog.borrarTodo) ;
+    },
 
-//mostrar los datos en el div ale
-function muestraDatos(){
-	$("#ale").html(""); 
-	for(var i in coments){ 
-		var comen = JSON.parse(coments[i]); 
-		$("#ale").append("<div class='ale'><p><b>"+comen.name+"</b></p><p>"+comen.coment+"</p></div>"); 
-	}
-}
+    agregarComentario: function (event) {
+        fotoLog.comentarios.push(fotoLog.nuevo);
+        localStorage.setItem("comentarios",fotoLog.comentarios);
+        $('#ale').append( `<div class='ale'><p><b> ${fotoLog.nuevo.nombre.val()} </b></p>\
+                            <p>  ${fotoLog.nuevo.comentario.val()} </p></div>`);
+    },
 
-//borra todos los datos
-function borrarTodo(){
-	localStorage.clear();
-	$("#ale").html("");
-	coments = [];
-}
+    borrarTodo: function (event) {
+        $('#ale').empty();
+    }
+};
+
+$(document).ready ( fotoLog.init );
