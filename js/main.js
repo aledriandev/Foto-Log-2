@@ -2,45 +2,49 @@
 ////////////////////////////////////////////////
 
 const fotoLog  = {
-		comentarios : [],
+	comentarios : [],
     nuevo :  {
         nombre: undefined,
         comentario: undefined
     },
 
-    init : function () {
+    inicio : function () {
         fotoLog.nuevo.nombre =  $('#clave');
         fotoLog.nuevo.comentario =  $('#valor');
-        fotoLog.setup ();
+        fotoLog.funciones ();
         fotoLog.mostrarComentarios();
     },
 
-    setup: function () {
+    funciones: function () {
         $('#agregar-comentario').click (fotoLog.agregarComentario) ;
         $('#borrar-todo').click (fotoLog.borrarTodo) ;
     },
 
-    agregarComentario: function (event) {
-        fotoLog.comentarios.push(fotoLog.nuevo);
-        localStorage.setItem("comentarios",fotoLog.comentarios);
-        $('#ale').append( `<div class='ale'><p><b> ${fotoLog.nuevo.nombre.val()} </b></p>\
-                            <p>  ${fotoLog.nuevo.comentario.val()} </p></div>`);
+    agregarComentario: function (evento) {
+        var clave = fotoLog.nuevo.nombre.val();
+        var valor = fotoLog.nuevo.comentario.val();
+        if (clave != "" && valor != "") {
+            localStorage.setItem(clave,valor);
+        }
+        fotoLog.mostrarComentarios();
+        fotoLog.nuevo.nombre.val("");
+        fotoLog.nuevo.comentario.val("");
     },
 
     mostrarComentarios: function(){
-    		$('#ale').empty();
-    		for (var i in fotoLog.comentarios) {
-    				var comentariosAqui = fotoLog.comentarios[i];
-    				$('#ale').append( `<div class='ale'><p><b> ${comentariosAqui.nombre} </b></p>\
-                            <p>  ${comentariosAqui.comentario} </p></div>`);
-    		}
+		$('#ale').empty();
+		for (var i in localStorage) {
+
+			$('#ale').append( `<div class='ale'><p><b> ${i} </b></p>\
+                        <p>  ${localStorage[i]} </p></div>`);
+		}
     },
 
-    borrarTodo: function (event) {
+    borrarTodo: function (evento) {
     		localStorage.clear();
         $('#ale').empty();
         fotoLog.comentarios=[]
     }
 };
 
-$(document).ready ( fotoLog.init );
+$(document).ready ( fotoLog.inicio );
